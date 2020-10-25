@@ -1,6 +1,7 @@
 package com.melgaabeb.cart;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,21 @@ public class CartTest {
 		cart.addProduct(product);
 		
 		assertEquals(cart.getProductList().size(), 1);
+	}
+	
+	@Test
+	public void WhenProductIsRemoavedThenItShouldBeDeletedFromTheCart() {
+		
+		Product productOne = new Product(1L);
+		cart.addProduct(productOne);
+		
+		Product productTwo = new Product(2L);
+		cart.addProduct(productTwo);
+		
+		cart.removeProduct(productOne.getId());
+		
+		assertEquals(cart.getProductList().size(), 1);
+		assertTrue(cart.getProductList().get(0).equals(productTwo));
 	}
 	
 }
