@@ -20,6 +20,16 @@ public class Cart {
 	public void addProduct(Product product) {
 		productList.add(product);
 	}
+	
+	public void removeProduct(Long productId) {
+		
+		for (int i = 0; i < productList.size(); i++) {
+	        if (productList.get(i).getId().equals(productId)) {
+	        	productList.remove(i);
+	        }
+	    }
+		
+	}
 
 	@Override
 	public int hashCode() {
