@@ -43,6 +43,10 @@ public class CartManager {
 		}
 	}
 	
+	public Integer getProductsCount() {
+		return cart.getProducts().values().stream().mapToInt(List::size).sum();
+	}
+	
 
 	@Override
 	public int hashCode() {
