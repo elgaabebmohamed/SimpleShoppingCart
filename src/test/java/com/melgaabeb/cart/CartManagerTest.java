@@ -52,5 +52,18 @@ public class CartManagerTest {
 		assertEquals(cartManager.getCart().getProducts().get(2L).size() , 1);
 	}
 	
+	@Test
+	public void WhenGetProductCountIsCalledThenItShouldReturnProductsCountOnTheCart() {
+		
+		Product productOne = new Product(1L);
+		cartManager.addProduct(productOne);
+		
+		Product productTwo = new Product(2L);
+		cartManager.addProduct(productTwo);
+		
+		assertEquals(cartManager.getProductsCount() , 2);
+
+	}
+	
 }
 
