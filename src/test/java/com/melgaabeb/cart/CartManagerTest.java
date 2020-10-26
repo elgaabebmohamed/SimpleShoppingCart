@@ -1,7 +1,8 @@
 package com.melgaabeb.cart;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,42 +10,45 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.melgaabeb.cart.bean.Cart;
 import com.melgaabeb.cart.bean.Product;
+import com.melgaabeb.cart.bean.Car;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
-public class CartTest {
+public class CartManagerTest {
 	
-	private Cart cart;
+	private CartManager cartManager;
 	
 	@BeforeAll
 	public void setUp() {
-		cart = new Cart();
+		cartManager = new CartManager();
 	}
 
 	@Test
 	public void WhenProductAddedThenItShouldBeRetainedInTheCart() {
 		
 		Product product = new Product(1L);
-		cart.addProduct(product);
+		cartManager.addProduct(product);
 		
-		assertEquals(cart.getProductList().size(), 1);
+		List<Product> producstList = cartManager.getCart().getProducts().get(1L);
+		
+		assertEquals(cartManager.getCart().getProducts().keySet().size(), 1);
+		assertEquals(producstList.size(), 1);
 	}
 	
 	@Test
 	public void WhenProductIsRemoavedThenItShouldBeDeletedFromTheCart() {
 		
 		Product productOne = new Product(1L);
-		cart.addProduct(productOne);
+		cartManager.addProduct(productOne);
 		
 		Product productTwo = new Product(2L);
-		cart.addProduct(productTwo);
+		cartManager.addProduct(productTwo);
 		
-		cart.removeProduct(productOne.getId());
+		cartManager.removeOneItemOfProduct(productOne.getId());
 		
-		assertEquals(cart.getProductList().size(), 1);
-		assertTrue(cart.getProductList().get(0).equals(productTwo));
+		assertEquals(cartManager.getCart().getProducts().get(1L).size() , 0);
+		assertEquals(cartManager.getCart().getProducts().get(2L).size() , 1);
 	}
 	
 }
