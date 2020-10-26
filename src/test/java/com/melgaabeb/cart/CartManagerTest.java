@@ -11,7 +11,8 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.melgaabeb.cart.bean.Product;
-import com.melgaabeb.cart.bean.Car;
+import com.melgaabeb.cart.manager.CartManager;
+
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

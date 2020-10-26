@@ -1,41 +1,29 @@
 package com.melgaabeb.cart.bean;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class Cart {
 	
-	List<Product> productList;
-
+	Map<Long, List<Product>> products;
+	
 	public Cart() {
 		super();
-		this.productList = new ArrayList<>();
+		this.products = new HashMap<>();
 	}
 
-	public Cart(List<Product> productList) {
+	public Cart(Map<Long, List<Product>> products) {
 		super();
-		this.productList = productList;
-	}
-	
-	public void addProduct(Product product) {
-		productList.add(product);
-	}
-	
-	public void removeProduct(Long productId) {
-		
-		for (int i = 0; i < productList.size(); i++) {
-	        if (productList.get(i).getId().equals(productId)) {
-	        	productList.remove(i);
-	        }
-	    }
-		
+		this.products = products;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((productList == null) ? 0 : productList.hashCode());
+		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		return result;
 	}
 
@@ -48,23 +36,20 @@ public class Cart {
 		if (getClass() != obj.getClass())
 			return false;
 		Cart other = (Cart) obj;
-		if (productList == null) {
-			if (other.productList != null)
+		if (products == null) {
+			if (other.products != null)
 				return false;
-		} else if (!productList.equals(other.productList))
+		} else if (!products.equals(other.products))
 			return false;
 		return true;
 	}
 
-	public List<Product> getProductList() {
-		return productList;
+	public Map<Long, List<Product>> getProducts() {
+		return products;
 	}
 
-	public void setProductList(List<Product> productList) {
-		this.productList = productList;
+	public void setProducts(Map<Long, List<Product>> products) {
+		this.products = products;
 	}
-	
-	
-	
 
 }
