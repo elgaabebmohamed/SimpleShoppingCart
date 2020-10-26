@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.melgaabeb.cart.bean.Product;
 import com.melgaabeb.cart.manager.CartManager;
+import com.melgaabeb.cart.manager.CartManagerImpl;
 
 
 @SpringBootTest
@@ -22,7 +23,7 @@ public class CartManagerTest {
 	
 	@BeforeAll
 	public void setUp() {
-		cartManager = new CartManager();
+		cartManager = new CartManagerImpl();
 	}
 
 	@Test
