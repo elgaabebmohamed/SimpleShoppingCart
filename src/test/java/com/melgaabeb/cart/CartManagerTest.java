@@ -48,8 +48,8 @@ public class CartManagerTest {
 		
 		cartManager.removeOneItemOfProduct(productOne.getId());
 		
-		assertEquals(cartManager.getCart().getProducts().get(1L).size() , 0);
-		assertEquals(cartManager.getCart().getProducts().get(2L).size() , 1);
+		assertEquals(cartManager.getProductsCount(1L) , 0);
+		assertEquals(cartManager.getProductsCount(2L) , 1);
 	}
 	
 	@Test
