@@ -1,5 +1,7 @@
 package com.melgaabeb.cart.manager;
 
+import java.util.List;
+
 import com.melgaabeb.cart.bean.Cart;
 import com.melgaabeb.cart.bean.Product;
 
@@ -16,5 +18,7 @@ public interface CartManager {
 	Cart getCart();
 
 	Double getTotalPrice();
+
+	List<Product> fetchProducts();
 
 }

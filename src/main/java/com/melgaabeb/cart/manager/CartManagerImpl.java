@@ -74,6 +74,15 @@ public class CartManagerImpl implements CartManager {
 		return cartSum;
 	}
 	
+	@Override
+	public List<Product> fetchProducts() {
+		List<Product> productList = new ArrayList<>();
+		for (Entry<Long, List<Product>> entry : cart.getProducts().entrySet()) {
+			productList.addAll(entry.getValue());
+		}
+		return productList;
+	}
+	
 
 	@Override
 	public int hashCode() {
