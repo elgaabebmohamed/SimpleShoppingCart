@@ -65,5 +65,22 @@ public class CartManagerTest {
 
 	}
 	
+	@Test
+	public void WhenGetProductCountIsCalledUsingProductIdThenItShouldReturnProductsCountRelatedToThisIdTheCart() {
+		
+		Product productOne = new Product(1L);
+		cartManager.addProduct(productOne);
+		
+		Product productTwo = new Product(2L);
+		cartManager.addProduct(productTwo);
+		
+		Product productThree = new Product(2L);
+		cartManager.addProduct(productThree);
+		
+		assertEquals(cartManager.getProductsCount(1L) , 1);
+		assertEquals(cartManager.getProductsCount(2L) , 2);
+
+	}
+	
 }
 
