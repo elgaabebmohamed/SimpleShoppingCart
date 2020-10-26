@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.melgaabeb.cart.bean.Cart;
 import com.melgaabeb.cart.bean.Product;
@@ -60,6 +61,17 @@ public class CartManagerImpl implements CartManager {
 			}
 		}
 		return result;
+	}
+	
+	@Override
+	public Double getTotalPrice() {
+		
+		Double cartSum = 0.0;
+		for (Entry<Long, List<Product>> entry : cart.getProducts().entrySet()) {
+			Double productSum = entry.getValue().stream().mapToDouble(Product::getPrice).sum();
+			cartSum += productSum;
+		}
+		return cartSum;
 	}
 	
 

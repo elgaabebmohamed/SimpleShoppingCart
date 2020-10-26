@@ -15,4 +15,6 @@ public interface CartManager {
 
 	Cart getCart();
 
+	Double getTotalPrice();
+
 }
