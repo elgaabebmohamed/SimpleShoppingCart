@@ -47,6 +47,17 @@ public class CartManager {
 		return cart.getProducts().values().stream().mapToInt(List::size).sum();
 	}
 	
+	public Integer getProductsCount(Long productId) {
+		Integer result = 0;
+		if (cart.getProducts().containsKey(productId)) {
+			List<Product> productList = cart.getProducts().get(productId);
+			if (productList != null && !productList.isEmpty()) {
+				result = productList.size();
+			}
+		}
+		return result;
+	}
+	
 
 	@Override
 	public int hashCode() {
