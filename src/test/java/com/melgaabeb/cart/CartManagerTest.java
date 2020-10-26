@@ -69,14 +69,7 @@ public class CartManagerTest {
 	@Test
 	public void WhenGetProductCountIsCalledUsingProductIdThenItShouldReturnProductsCountRelatedToThisIdTheCart() {
 		
-		Product productOne = new Product(1L, 1.2);
-		cartManager.addProduct(productOne);
-		
-		Product productTwo = new Product(2L, 2.1);
-		cartManager.addProduct(productTwo);
-		
-		Product productThree = new Product(2L, 2.1);
-		cartManager.addProduct(productThree);
+		initCartWithThreeProducts();
 		
 		assertEquals(cartManager.getProductsCount(1L) , 1);
 		assertEquals(cartManager.getProductsCount(2L) , 2);
@@ -86,14 +79,7 @@ public class CartManagerTest {
 	@Test
 	public void WhenGetTotalPriceIsCalledThenItShouldReturnThePriceofTheCart() {
 		
-		Product productOne = new Product(1L, 1.2);
-		cartManager.addProduct(productOne);
-		
-		Product productTwo = new Product(2L, 2.1);
-		cartManager.addProduct(productTwo);
-		
-		Product productThree = new Product(2L, 2.1);
-		cartManager.addProduct(productThree);
+		initCartWithThreeProducts();
 		
 		assertEquals(cartManager.getTotalPrice() , 5.4);
 
@@ -102,6 +88,13 @@ public class CartManagerTest {
 	@Test
 	public void WhenFetchProductsIsCalledThenItShouldReturnProductsInTheCart() {
 		
+		initCartWithThreeProducts();
+		
+		assertEquals(cartManager.fetchProducts().size() , 3);
+
+	}
+	
+	private void initCartWithThreeProducts() {
 		Product productOne = new Product(1L, 1.2);
 		cartManager.addProduct(productOne);
 		
@@ -110,9 +103,6 @@ public class CartManagerTest {
 		
 		Product productThree = new Product(2L, 2.1);
 		cartManager.addProduct(productThree);
-		
-		assertEquals(cartManager.fetchProducts().size() , 3);
-
 	}
 	
 }
